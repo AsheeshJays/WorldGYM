@@ -1,0 +1,149 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}
+<title>GYM World | Super User</title>
+{% endblock %}
+{% block body %}
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>CRUD Category Profile</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">profile<span class="lnr lnr-arrow-right"></span></a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="checkout_area section_gap">
+    <div class="container">
+        <div class="returning_customer">
+        <div class="billing_details">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Category Details</h3>
+                    <form class="row contact_form" action="#" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" id="mname" name="mname" placeholder="MainCategory Name">
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" id="sname" name="sname" placeholder="SubCategory Name">
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" id="bname" name="bname" placeholder="Brand Name">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <button type="submit" value="submit" class="primary-btn">Add Category</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="login_box_area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h3>Main Category</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in mainCat %}
+                            <tr>
+                                <td>
+                                    <h5>{{i.mcid}}</h5>
+                                </td>
+                                <td>
+                                    <h5>{{i.name}}</h5>
+                                </td>
+                                <td>
+                                    <a href="/editMainCategory/{{i.mcid}}/" class="primary-btn">Edit</a>
+                                </td>
+                                <td>
+                                    <a href="/deleteMainCategory/{{i.mcid}}/" id="confirm" onclick="return confirm('Are you sure you want to delete this?')" class="primary-btn">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h3>Sub Category</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in subCat %}
+                            <tr>
+                                <td>
+                                    <h5>{{i.scid}}</h5>
+                                </td>
+                                <td>
+                                    <h5>{{i.name}}</h5>
+                                </td>
+                                <td>
+                                    <a href="/editSubCategory/{{i.scid}}/" class="primary-btn">Edit</a>
+                                </td>
+                                <td>
+                                    <a href="/deleteSubCategory/{{i.scid}}/" id="confirm" onclick="return confirm('Are you sure you want to delete this?')" class="primary-btn">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h3>Brand</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in Brand %}
+                            <tr>
+                                <td>
+                                    <h5>{{i.bid}}</h5>
+                                </td>
+                                <td>
+                                    <h5>{{i.name}}</h5>
+                                </td>
+                                <td>
+                                    <a href="/editBrand/{{i.bid}}/" class="primary-btn">Edit</a>
+                                </td>
+                                <td>
+                                    <a href="/deleteBrand/{{i.bid}}/" id="confirm" onclick="return confirm('Are you sure you want to delete this?')" class="primary-btn">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
